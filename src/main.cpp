@@ -23,10 +23,10 @@ uint32_t i2c_read_20bit(uint8_t addr, uint8_t start_reg) {
   uint8_t lsb = i2c_read_byte(addr, start_reg);
   uint8_t middle = i2c_read_byte(addr, start_reg+1);
   uint8_t msb = i2c_read_byte(addr, start_reg+2);
-  ret = lsb;
-  ret |= middle << 8;
-  ret |= msb << 16;
-  ret &= 0x000FFFFF; // msak off top 12 bits (they're unused)
+  ret = (uint32_t)lsb;
+  ret |= (uint32_t)middle << 8;
+  ret |= (uint32_t)msb << 16;
+  ret &= 0x000FFFFF; // mask off top 12 bits (they're unused)
   return ret;
 }
 
@@ -34,8 +34,8 @@ uint16_t i2c_read_12bit(uint8_t addr, uint8_t start_reg) {
   uint16_t ret;
   uint8_t lsb = i2c_read_byte(addr, start_reg);
   uint8_t msb = i2c_read_byte(addr, start_reg+1);
-  ret = lsb;
-  ret |= msb << 8;
+  ret = (uint32_t)lsb;
+  ret |= (uint32_t)msb << 8;
 }
 
 void configure_color_sensor(int address) {
