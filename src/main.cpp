@@ -34,8 +34,9 @@ uint16_t i2c_read_12bit(uint8_t addr, uint8_t start_reg) {
   uint16_t ret;
   uint8_t lsb = i2c_read_byte(addr, start_reg);
   uint8_t msb = i2c_read_byte(addr, start_reg+1);
-  ret = (uint32_t)lsb;
-  ret |= (uint32_t)msb << 8;
+  ret = (uint16_t)lsb;
+  ret |= (uint16_t)msb << 8;
+  return ret;
 }
 
 void configure_color_sensor(int address) {
@@ -75,5 +76,5 @@ void loop() {
   Serial.print(", PS: ");
   Serial.print(ps);
   Serial.print(", PSO: ");
-  Serial.print(ps_overflow);
+  Serial.println(ps_overflow);
 }

@@ -28,7 +28,7 @@
 #define REG_PS_THRES_UP0 0x1B
 #define REG_PS_THRES_UP1 0x1C
 #define REG_PS_THRES_LOW 0x1D
-#define REG_PS_THRES_LOW 0x1E
+#define REG_PS_THRES_HIGH 0x1E
 #define REG_PS_CAN0 0x1F
 #define REG_PS_CAN1 0x20
 #define REG_LS_THRES_UP0 0x21
